@@ -9,4 +9,6 @@ It comprises of four models
 * Food
 * Order
 
+For resetPassword Mail will be sent to user's mail.For that function to work, update helper.js file with your email and password.
+
 The API Documentation is available on /Link to be updated/
