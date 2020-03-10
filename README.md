@@ -11,4 +11,6 @@ It comprises of four models
 
 For resetPassword Mail will be sent to user's mail.For that function to work, update helper.js file with your email and password.
 
-The API Documentation is available on /Link to be updated/
+The API Documentation for users and foods routes is available on https://styker-github.github.io/swaggerDocs/index.html
+
+swagger.yaml is a file attached along with the project.Copy and paste it on editor.swagger.io for api documentation.
