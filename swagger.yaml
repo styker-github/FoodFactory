@@ -1,0 +1,515 @@
+swagger: "2.0"
+info:
+  description: "This documentation is prepared for FoodFactory App - A squash apps assignment"
+  version: "1.0.0"
+  title: "Food Factory"
+  contact:
+    email: "itsmemani4you@gmail.com"
+host: "localhost:8080"
+basePath: "/"
+tags:
+- name: "users"
+  description: "Endpoints - users route"
+- name: "foods"
+  description: "Endpoints - foods route"
+- name: "ingredients"
+  description: "Endpoints - ingredients route"
+- name: "orders"
+  description: "Endpoints - orders route"
+
+schemes:
+- "http"
+
+paths:
+  /users/signup:
+    post:
+      tags:
+      - "users"
+      summary: "New user signup"
+      description: ""
+      operationId: "signup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              Name:
+                type: string
+              Email:
+                type: string
+              password:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - Signup successful; success false - Signup failed"
+          
+  /users/login:
+    post:
+      tags:
+      - "users"
+      summary: "user Login"
+      description: ""
+      operationId: "login"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              Email:
+                type: string
+              password:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - Login successful; success false - Login failed"
+  /users/changePassword:
+    post:
+      tags:
+      - "users"
+      summary: "user Change Password"
+      description: ""
+      operationId: "changePassword"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              Email:
+                type: string
+              currentPassword:
+                type: string
+              newPassword:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - Change Password successful; success false - Change Password failed"
+  /users/resetPassword:
+    post:
+      tags:
+      - "users"
+      summary: "user Reset Password"
+      description: ""
+      operationId: "resetPassword"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              Email:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - Reset password successful; success false - Reset password failed"
+  /users/deactivate:
+    post:
+      tags:
+      - "users"
+      summary: "Deactivate a user"
+      description: ""
+      operationId: "deactivate"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              Email:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - User deactivation successful; success false - User deactivation failed"
+  /users/update:
+    post:
+      tags:
+      - "users"
+      summary: "To update a user"
+      description: ""
+      operationId: "update"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              Email:
+                type: string
+              Name:
+                type: string
+              Status:
+                type: boolean
+                
+      responses:
+        200:
+          description: "success true - User update successful; success false - user update failed"
+  /users/userdetail:
+    post:
+      tags:
+      - "users"
+      summary: "View an user"
+      description: ""
+      operationId: "userdetail"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              Email:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - Fetching user detail successful; success false - Fetching user detail failed"
+  /users/list:
+    get:
+      tags:
+      - "users"
+      summary: "To list all users"
+      description: ""
+      operationId: "list"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Params"
+        type: "string"
+        description: "No parameters required"
+                
+      responses:
+        200:
+          description: "success true - Fetching user list successful; success false - Fetching User list failed"
+          
+  /users/delete:
+    post:
+      tags:
+      - "users"
+      summary: "To delete an user"
+      description: ""
+      operationId: "delete"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              Email:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - User delete successful; success false - User delete failed"
+  /foods/create:
+    post:
+      tags:
+      - "foods"
+      summary: "To create a food"
+      description: ""
+      operationId: "createFood"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              name:
+                type: string
+              cuisine:
+                type: string
+              ingredients:
+                type: array
+                items:
+                  type: "string"
+              costOfProduction:
+                type: number
+              sellingCost:
+                type: number
+              lotNumber:
+                type: number
+                
+      responses:
+        200:
+          description: "success true - Food creation successful; success false - Food creation failed"
+  /foods/update:
+    post:
+      tags:
+      - "foods"
+      summary: "To update food"
+      description: ""
+      operationId: "updateFood"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              name:
+                type: string
+              cuisine:
+                type: string
+              ingredients:
+                type: array
+                items:
+                  type: "string"
+              costOfProduction:
+                type: number
+              sellingCost:
+                type: number
+                
+      responses:
+        200:
+          description: "success true - Food update successful; success false - Food update failed"
+  /foods/detail:
+    get:
+      tags:
+      - "foods"
+      summary: "To fetch a foodDetail"
+      description: ""
+      operationId: "foodDetail"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Params"
+        type : string
+        description: "lotNumber required"
+                
+      responses:
+        200:
+          description: "success true - Food detail fetched successfully; success false - Food detail fetch failed"
+  /foods/list:
+    get:
+      tags:
+      - "foods"
+      summary: "To fetch list of foods"
+      description: ""
+      operationId: "foodlist"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Params"
+        type: string
+        description: "No parameters required"
+        
+                
+      responses:
+        200:
+          description: "success true - Food list fetched successfully; success false - Food list fetch failed"
+  /foods/delete:
+    post:
+      tags:
+      - "foods"
+      summary: "To delete food"
+      description: ""
+      operationId: "deleteFood"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              lotNumber:
+                type: number
+                
+      responses:
+        200:
+          description: "success true - Food delete successful; success false - Food delete failed"
+  /foods/cost:
+    get:
+      tags:
+      - "foods"
+      summary: "To determine food with costOfProduction > sellingCost "
+      description: ""
+      operationId: "foodcost"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Params"
+        type: string
+        description: "No parameters required"
+                
+      responses:
+        200:
+          description: "success true - Data return successful; success false - Error occured while estimating."
+definitions:
+  Order:
+    type: "object"
+    properties:
+      orderNum:
+        type: "string"
+        description: "Order Reference"
+      orderDate:
+        type: "string"
+        format: "date-time"
+      modeOfTransport:
+        type: "string"
+        description: "Order Transport Mode"
+      dateOfdelivery:
+        type: "string"
+        format: "date-time"
+      status:
+        type: "string"
+        description: "Order Status"
+        enum:
+        - "order_placed"
+        - "order_processed"
+        - "order_completed"
+    xml:
+      name: "Order"
+      
+  User:
+    type: "object"
+    properties:
+      Name:
+        type: "string"
+      Email:
+        type: "string"
+      Status:
+        type: "boolean"
+      lastLoginAt:
+        type: "string"
+        format: "date-time"
+      updatedAt:
+        type: "string"
+        format: "date-time"
+      createdAt:
+        type: "string"
+        format: "date-time"
+      password:
+        type: "string"
+      is_deleted:
+        type: "boolean"
+    xml:
+      name: "User"
+      
+  Food:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      createdAt:
+        type: "string"
+        format: "date-time"
+      cuisine:
+        type: "string"
+      ingredients:
+        type: "array"
+        items:
+          type: "string"
+      lotNumber:
+        type: "number"
+      costOfProduction:
+        type: "number"
+      sellingCost:
+        type: "number"
+      is_deleted:
+        type: "boolean"
+    xml:
+      name: "Food"
+      
+  Ingredient:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      price:
+        type: "number"
+      vendorName:
+        type: "string"
+      vendorEmail:
+        type: "string"
+      lotnumber:
+        type: "number"
+      availableQuantity:
+        type: "number"
+      thresholdQuantity:
+        type: "number"
+      is_deleted:
+        type: "boolean"
+    xml:
+      name: "Ingredient"
+  
