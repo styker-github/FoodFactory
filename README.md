@@ -9,4 +9,4 @@ It comprises of four models
 * Food
 * Order
 
-The API Documentation is available on <Link to be updated>
+The API Documentation is available on /Link to be updated/
