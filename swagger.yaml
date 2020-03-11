@@ -415,6 +415,115 @@ paths:
       responses:
         200:
           description: "success true - Data return successful; success false - Error occured while estimating."
+
+          
+  /orders/newOrder:
+    post:
+      tags:
+      - "orders"
+      summary: "To place a new order"
+      description: ""
+      operationId: "neworder"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              dateOfdelivery:
+                type: string
+                format: date-time
+              Email:
+                type: string
+              transportMode:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - Order placed successfully; success false - Error occured while placing order."
+          
+  /orders/list:
+    get:
+      tags:
+      - "orders"
+      summary: "To fetch all orders "
+      description: ""
+      operationId: "orderlist"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Params"
+        type: string
+        description: "No parameters required"
+                
+      responses:
+        200:
+          description: "success true - Orders fetched successfully; success false - Error occured while fetching all orders."
+          
+  /orders/status:
+    post:
+      tags:
+      - "orders"
+      summary: "To update order status "
+      description: ""
+      operationId: "orderstatus"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              orderNum:
+                type: string
+              status:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - Order updated successfully; success false - Error occured while updating order."
+          
+  /orders/userOrders:
+    post:
+      tags:
+      - "orders"
+      summary: "To fetch user order "
+      description: ""
+      operationId: "userorders"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Request body"
+        description: "The body of the request should be constructed as follows"
+        schema:
+            # Body schema with atomic property examples
+            type: object
+            properties:
+              Email:
+                type: string
+                
+      responses:
+        200:
+          description: "success true - Successfully fetched user orders; success false - Error occured while fetching user orders."
+          
+  
 definitions:
   Order:
     type: "object"
